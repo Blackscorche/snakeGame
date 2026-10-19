@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Snake</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="snake.css" />
+</head>
+<body>
+  <!-- Floating, blurred color blobs that drift behind everything -->
+  <div class="bg">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <main class="app">
+    <!-- Title + scoreboard -->
+    <header class="hud">
+      <h1 class="title">NEON<span>SNAKE</span></h1>
+      <div class="stats">
+        <div class="stat">
+          <span class="label">Score</span>
+          <span class="value" id="score">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">Best</span>
+          <span class="value" id="best">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">Speed</span>
+          <span class="value" id="level">1</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- The game board: a canvas inside a spinning neon border -->
+    <section class="board-wrap" id="boardWrap">
+      <canvas id="board"></canvas>
+
+      <!-- Start screen -->
+      <div class="overlay show" id="startScreen">
+        <div class="card">
+          <div class="emoji-snake">🐍</div>
+          <h2>Ready to slither?</h2>
+          <p>Eat the glowing orbs. Grab the <b class="gold">gold</b> ones before they vanish.<br />Don't hit the walls — or yourself.</p>
+          <button class="btn" id="startBtn">Start Game</button>
+          <p class="hint">Press <kbd>Space</kbd> or tap to start</p>
+        </div>
+      </div>
+
+      <!-- Pause screen -->
+      <div class="overlay" id="pauseScreen">
+        <div class="card">
+          <h2>Paused</h2>
+          <p>Take a breath.</p>
+          <button class="btn" id="resumeBtn">Resume</button>
+        </div>
+      </div>
+
+      <!-- Game over screen -->
+      <div class="overlay" id="overScreen">
+        <div class="card">
+          <h2 class="danger">Game Over</h2>
+          <div class="new-best" id="newBest">★ NEW BEST ★</div>
+          <p class="final">Score <span id="finalScore">0</span></p>
+          <button class="btn" id="restartBtn">Play Again</button>
+          <p class="hint">Press <kbd>Space</kbd> to restart</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls help -->
+    <footer class="controls">
+      <span><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> / <kbd>WASD</kbd> move</span>
+      <span><kbd>Space</kbd> pause</span>
+      <span><kbd>M</kbd> sound <b id="soundState">on</b></span>
+      <span class="touch-only">Swipe to move</span>
+    </footer>
+  </main>
+
+  <script src="snake.js"></script>
+</body>
+</html>
